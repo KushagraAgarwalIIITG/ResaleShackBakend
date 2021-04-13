@@ -34,9 +34,9 @@ async function sendMes(user) {
   const token = jwt.sign({user},process.env.SECRET); 
   const mailOptions = {
     from: 'kushagrakinayiid@gmail.com', // sender address
-    to: "kushagra.agarwal@iiitg.ac.in", // list of receivers
-    subject: "Hello ✔", // Subject line
-    text: "Hello world?", // plain text body
+    to: user.email, // list of receivers
+    subject: 'Verification Email' , // Subject line
+    //text: "Hello world?", // plain text body
     html: `<b>Click on this link to verify your ResaleShack Account</b>
     <p>${process.env.CLIENT_API}/api/authentication/activate/${token}`, // html body
   };
@@ -44,14 +44,14 @@ async function sendMes(user) {
     if(err)
       console.log(err)
     else
-      return res.json({message : "Email has been sent see your institute mail"})
+      return ({message : "Email has been sent see your institute mail"})
  });
 
 }
 
 sendMes().catch(console.error);
 
-exports.signup= function(req, res)
+exports.signup= async function(req, res)
 {
     
     console.log("signup backend")
@@ -60,7 +60,9 @@ exports.signup= function(req, res)
       return res.status(400).json({ errors: errors.array()[0].msg });
     }
     const user = new User(req.body);
-     sendMes(req.body);
+    // sendMes(req.body);
+     const messageStatus= await sendMes(req.body);
+     res.json(messageStatus);
     
     // user.save((err,user)=>{
     //     if(err)
