@@ -12,24 +12,65 @@ exports.isAdmin=function(req,res,next){
         }
         next();
 }
+"use strict";
+const nodemailer = require("nodemailer");
+
+// async..await is not allowed in global scope, must use a wrapper
+async function sendMes(user) {
+ 
+  // create reusable transporter object using the default SMTP transport
+  let transporter = nodemailer.createTransport({
+     host: "smtp.gmail.com",
+     port: 587,
+     secure: false, // true for 465, false for other ports
+    service :'gmail',
+    auth: {
+      user: 'kushagrakinayiid@gmail.com', // generated ethereal user
+      pass: 'btechcse@1', // generated ethereal password
+    }
+  });
+  const {name,email}=user;
+ // const token = jwt.sign({_id: user._id},process.env.SECRET); 
+  const token = jwt.sign({user},process.env.SECRET); 
+  const mailOptions = {
+    from: 'kushagrakinayiid@gmail.com', // sender address
+    to: "kushagra.agarwal@iiitg.ac.in", // list of receivers
+    subject: "Hello ✔", // Subject line
+    text: "Hello world?", // plain text body
+    html: `<b>Click on this link to verify your ResaleShack Account</b>
+    <p>${process.env.CLIENT_API}/api/authentication/activate/${token}`, // html body
+  };
+  transporter.sendMail(mailOptions, function (err, info) {
+    if(err)
+      console.log(err)
+    else
+      return res.json({message : "Email has been sent see your institute mail"})
+ });
+
+}
+
+sendMes().catch(console.error);
 
 exports.signup= function(req, res)
 {
     
+    console.log("signup backend")
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array()[0].msg });
     }
     const user = new User(req.body);
-    user.save((err,user)=>{
-        if(err)
-        {
-            return res.status(400).json({
-                err : "Not able to save the user successfully"
-            });
-        }
-        res.json(user);
-    })
+     sendMes(req.body);
+    
+    // user.save((err,user)=>{
+    //     if(err)
+    //     {
+    //         return res.status(400).json({
+    //             err : "Not able to save the user successfully"
+    //         });
+    //     }
+    //     res.json(user);
+    // })
     // console.log("REQUEST BODY", req.body)
     // //only one thing works in the function either json or send
     // res.json({
@@ -38,7 +79,43 @@ exports.signup= function(req, res)
     
     
 }
-
+exports.getToken = (req,res,next,token)=>{
+    res.setHeader("Content-Type", "application/json");
+        console.log(token);
+        req.profile= token;
+        next();
+    
+}
+exports.activateAccount=(req,res)=>{
+    const token = req.profile;
+    console.log(token)
+    if(token){
+        jwt.verify(token,process.env.SECRET,function(err,decodedToken){
+            if(err)
+            {
+                return res.status(400).json({error:"Link Incorrect"})
+            }
+            const {user}= decodedToken;
+           // console.log(user);
+         
+         
+         
+            const newUser = new User(user);
+             newUser.save((err,user)=>{
+        if(err)
+        {
+            return res.status(400).json({
+                err : "Not able to save the user successfully"
+            });
+        }
+       return res.json("You are verified");
+    })
+    
+        })
+    }else{
+        return res.json({error:"something went wrong"})
+    }
+}
 exports.signin= function(req,res){
     const { email, password}= req.body;
     const errors = validationResult(req);

@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 require('dotenv').config()
+//const config =require('config')
+const morgan = require('morgan')
 var cookieParser = require('cookie-parser')
 var bodyParser = require('body-parser')
 var cors = require('cors')
@@ -20,6 +22,12 @@ mongoose.connect(process.env.DATABASE, {
     console.log("DB CONNECTED");
   });
 
+  
+  if (process.env.NODE_ENV !== "test") {
+    //use morgan to log at command line
+    app.use(morgan("combined")); //'combined' outputs the Apache style LOGs
+  }
+
 //MIDDLEWARE
   app.use(cookieParser());
   app.use(bodyParser.json());
@@ -39,5 +47,6 @@ const port = process.env.PORT || 8000;
 
 //SERVER
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
+  console.log(` listening at http://localhost:${port}`)
 })
+module.exports=app;
