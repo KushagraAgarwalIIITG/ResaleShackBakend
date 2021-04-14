@@ -1,11 +1,11 @@
 const e = require('express');
 var express = require('express')
 var router = express.Router()
-var {isAdmin,signup,signin,signout,isSignedIn} = require('../controllers/auth')
+var {isAdmin,signup,signin,signout,isSignedIn,getToken, activateAccount,} = require('../controllers/auth')
 const { check } = require('express-validator');
 
 // define the home page route
-
+router.param("token",getToken);
 router.post('/signup',[
 check('email',"Only institute emails required").custom(value=>{
     if(value.match(/@iiitg.ac.in$/))
@@ -21,7 +21,7 @@ check('email',"Only institute emails required").custom(value=>{
 
 signup)
 
-
+router.get('/authentication/activate/:token',activateAccount);
 router.post('/signin',[
 check('email',"Only institute emails required").custom(value=>{
     if(value.match(/@iiitg.ac.in$/))
