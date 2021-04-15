@@ -25,15 +25,15 @@ async function sendMes(user) {
      secure: false, // true for 465, false for other ports
     service :'gmail',
     auth: {
-      user: 'kushagrakinayiid@gmail.com', // generated ethereal user
-      pass: 'btechcse@1', // generated ethereal password
+      user: 'resaleshack18@gmail.com', // generated ethereal user
+      pass: 'menahibataunga', // generated ethereal password
     }
   });
  // const {name,email}=user;
  // const token = jwt.sign({_id: user._id},process.env.SECRET); 
   const token = jwt.sign({user},process.env.SECRET); 
   const mailOptions = {
-    from: 'kushagrakinayiid@gmail.com', // sender address
+    from: 'resaleshack18@gmail.com', // sender address
     to: user?.email, // list of receivers
     subject: 'Verification Email' , // Subject line
     //text: "Hello world?", // plain text body
