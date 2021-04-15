@@ -22,11 +22,6 @@ mongoose.connect(process.env.DATABASE, {
     console.log("bruhmaaaaaaaaaaaaaaaaaaa  DB CONNECTED");
   });
 
-  
-  if (process.env.NODE_ENV !== "test") {
-    //use morgan to log at command line
-    app.use(morgan("combined")); //'combined' outputs the Apache style LOGs
-  }
 
 //MIDDLEWARE
   app.use(cookieParser());
