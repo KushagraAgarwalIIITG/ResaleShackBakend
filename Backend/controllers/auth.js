@@ -29,12 +29,12 @@ async function sendMes(user) {
       pass: 'btechcse@1', // generated ethereal password
     }
   });
-  const {name,email}=user;
+ // const {name,email}=user;
  // const token = jwt.sign({_id: user._id},process.env.SECRET); 
   const token = jwt.sign({user},process.env.SECRET); 
   const mailOptions = {
     from: 'kushagrakinayiid@gmail.com', // sender address
-    to: user.email, // list of receivers
+    to: user?.email, // list of receivers
     subject: 'Verification Email' , // Subject line
     //text: "Hello world?", // plain text body
     html: `<b>Click on this link to verify your ResaleShack Account</b>
@@ -62,7 +62,8 @@ exports.signup= async function(req, res)
     const user = new User(req.body);
     // sendMes(req.body);
      const messageStatus= await sendMes(req.body);
-     res.json(messageStatus);
+     console.log(messageStatus)
+    return res.json({message : "Email has been sent see your institute mail"});
     
     // user.save((err,user)=>{
     //     if(err)
