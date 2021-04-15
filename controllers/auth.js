@@ -38,7 +38,7 @@ async function sendMes(user) {
     subject: 'Verification Email' , // Subject line
     //text: "Hello world?", // plain text body
     html: `<b>Click on this link to verify your ResaleShack Account</b>
-    <a>${process.env.CLIENT_API}/api/authentication/activate/${token}</a>`, // html body
+    <a href=${process.env.CLIENT_API}/api/authentication/activate/${token}>${process.env.CLIENT_API}/api/authentication/activate/${token}</a>`, // html body
   };
   transporter.sendMail(mailOptions, function (err, info) {
     if(err)
