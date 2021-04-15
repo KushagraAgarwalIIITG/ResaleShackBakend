@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 require('dotenv').config()
 //const config =require('config')
-const morgan = require('morgan')
 var cookieParser = require('cookie-parser')
 var bodyParser = require('body-parser')
 var cors = require('cors')
