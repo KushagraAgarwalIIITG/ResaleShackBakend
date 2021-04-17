@@ -60,17 +60,21 @@ exports.deleteFromReview = (req, res) => {
 exports.removeReview = (req, res) => {
     // console.log(req.ad);
     // const rad = req.ad;
-    ReviewAds.deleteOne({ ad: req.ad })
-        .then((err, rad) => {
-
-            if (err) {
-                return res.status(400).json({
-                    error: " review not removed from the db"
+    ReviewAds.deleteMany({ ad: req.ad })
+        .then((data) => {
+            
+            if (data) {
+                // console.log("this is error",err);
+                // console.log("rad",rad);
+                return res.status(200).json({
+                    message: " review  removed from the db"
                 })
             }
+            else{
             res.json({
-                message: "Successfully deleted"
+                message: `Not deleted `
             });
+        }
         });
 
 }
