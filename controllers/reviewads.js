@@ -60,7 +60,7 @@ exports.deleteFromReview = (req, res) => {
 exports.removeReview = (req, res) => {
     // console.log(req.ad);
     // const rad = req.ad;
-    ReviewAds.deleteMany({ ad: req.ad })
+    ReviewAds.deleteOne({ ad: req.ad })
         .then((data) => {
             
             if (data) {
