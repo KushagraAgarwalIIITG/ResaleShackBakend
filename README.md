@@ -12,9 +12,9 @@
     Check for the succesfull installation using the command -> node -v and npm -v.** \
  **C) Open command prompt and change the directory to the cloned directory and run command -> npm install.** \
  **D) Update the .env file ** \
- **D) Use command -> npm start to start the server.** \
- **E) Open your favourite browser and goto http://localhost:8000/.** \
- **F) Repeat steps B,C,D as above from the previous section.** \
+ **E) Use command -> npm start to start the server.** \
+ **F) Open your favourite browser and goto http://localhost:8000/.** \
+ **G) Repeat steps B,C,D as above from the previous section.** \
  
 
 
