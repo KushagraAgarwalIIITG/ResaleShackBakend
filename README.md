@@ -90,22 +90,22 @@ Operating System Server: Windows, Linux, Mac
 ### Backend:
 `controllers` - Contains all the functions associated with respective routes \
 `controllers/` \
-&nbsp; `ad.js` - controllers for ads \
-    `auth.js` - controllers for sign in and sign up
-    `category.js` - controllers for categories
-    reviewads.js - controllers for ads to be reviewed 
-    user.js - controllers for user dashboard
-models - contains all the schemas for the components
-models/
-ad.js - Schema for ads
-category.js - Schema for category
-reviewads.js - Schema for review ads
-user.js - Schema for user dashboard
-routes - Contains routes associated with each component
-routes/
-ad.js - routes associated with ads
-auth.js - routes associated with sign in and sign up
-category.js - routes associated with categories
-reviewads.js - routes associated with ads to be reviewed 
-user.js - routes associated with user dashboard
+&nbsp; &nbsp; &nbsp; `ad.js` - controllers for ads \
+&nbsp; &nbsp; &nbsp; `auth.js` - controllers for sign in and sign up \
+&nbsp; &nbsp; &nbsp; `category.js` - controllers for categories \
+&nbsp; &nbsp; &nbsp; `reviewads.js` - controllers for ads to be reviewed \
+&nbsp; &nbsp; &nbsp; `user.js` - controllers for user dashboard \
+`models` - contains all the schemas for the components \
+`models/` \
+&nbsp; &nbsp; &nbsp; `ad.js` - Schema for ads \
+&nbsp; &nbsp; &nbsp; `category.js` - Schema for category \
+&nbsp; &nbsp; &nbsp; `reviewads.js` - Schema for review ads \
+&nbsp; &nbsp; &nbsp; `user.js` - Schema for user dashboard \
+`routes` - Contains routes associated with each component
+`routes/`
+&nbsp; &nbsp; &nbsp; `ad.js` - routes associated with ads
+&nbsp; &nbsp; &nbsp; `auth.js` - routes associated with sign in and sign up
+&nbsp; &nbsp; &nbsp; `category.js` - routes associated with categories
+&nbsp; &nbsp; &nbsp; `reviewads.js` - routes associated with ads to be reviewed 
+&nbsp; &nbsp; &nbsp; `user.js` - routes associated with user dashboard
 
