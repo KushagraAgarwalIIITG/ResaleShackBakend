@@ -86,5 +86,26 @@ Backend: Node.js, Express.js
 Deployment
 Operating System Server: Windows, Linux, Mac
 
-
+## FOLDER STRUCTURE
+### Backend:
+`controllers` - Contains all the functions associated with respective routes \
+`controllers/` \
+\hspace `ad.js` - controllers for ads \
+    `auth.js` - controllers for sign in and sign up
+    `category.js` - controllers for categories
+    reviewads.js - controllers for ads to be reviewed 
+    user.js - controllers for user dashboard
+models - contains all the schemas for the components
+models/
+ad.js - Schema for ads
+category.js - Schema for category
+reviewads.js - Schema for review ads
+user.js - Schema for user dashboard
+routes - Contains routes associated with each component
+routes/
+ad.js - routes associated with ads
+auth.js - routes associated with sign in and sign up
+category.js - routes associated with categories
+reviewads.js - routes associated with ads to be reviewed 
+user.js - routes associated with user dashboard
 
