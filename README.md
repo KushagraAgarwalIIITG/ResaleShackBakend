@@ -101,11 +101,11 @@ Operating System Server: Windows, Linux, Mac
 &nbsp; &nbsp; &nbsp; `category.js` - Schema for category \
 &nbsp; &nbsp; &nbsp; `reviewads.js` - Schema for review ads \
 &nbsp; &nbsp; &nbsp; `user.js` - Schema for user dashboard \
-`routes` - Contains routes associated with each component
-`routes/`
-&nbsp; &nbsp; &nbsp; `ad.js` - routes associated with ads
-&nbsp; &nbsp; &nbsp; `auth.js` - routes associated with sign in and sign up
-&nbsp; &nbsp; &nbsp; `category.js` - routes associated with categories
-&nbsp; &nbsp; &nbsp; `reviewads.js` - routes associated with ads to be reviewed 
-&nbsp; &nbsp; &nbsp; `user.js` - routes associated with user dashboard
+`routes` - Contains routes associated with each component \
+`routes/` \
+&nbsp; &nbsp; &nbsp; `ad.js` - routes associated with ads \
+&nbsp; &nbsp; &nbsp; `auth.js` - routes associated with sign in and sign up \
+&nbsp; &nbsp; &nbsp; `category.js` - routes associated with categories \
+&nbsp; &nbsp; &nbsp; `reviewads.js` - routes associated with ads to be reviewed \ 
+&nbsp; &nbsp; &nbsp; `user.js` - routes associated with user dashboard \
 
